@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Excel Form</title>
+</head>
+
+<body>
+
+    <form name="contact">
+        <input name="firstName" type="text" placeholder="First Name">
+        <br><br>
+        <input name="lastName" type="text" placeholder="Last Name">
+        <br><br>
+        <input name="email" type="email" placeholder="Email">
+        <br><br>
+        <input name="phone" type="tel"  placeholder="Phone No">
+        <br><br>
+        <button type="submit">Send</button>
+    </form>
+    
+    <script>  
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw2oSt1ygN4Te75MHO2CRGgJOrPJb0OVE2GqRJWGR5Icic1GFtN/exec'
+        const form = document.forms['contact']
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
+        })  
+    </script>
+    <!-- <form id="test-form">
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name" placeholder="Name">
+        <br>
+        <br>
+        <label for="phone">Phone</label>
+        <br>
+        <input type="tel" name="phone" placeholder="Phone No">
+        <br>
+        <br>
+        <input type="submit" value="Submit" id="submit-form">
+        <br>
+        <br>
+        <p id="notify"></p>
+    </form> -->
+</body>
+
+
+</html>

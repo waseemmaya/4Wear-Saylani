@@ -1,0 +1,17 @@
+[
+  {
+    "gender": "male",
+    "imgURL": "https://randomuser.me/api/portraits/med/men/65.jpg",
+    "street": "Korangi"
+  },
+  {
+    "gender": "female",
+    "imgURL": "https://randomuser.me/api/portraits/med/men/67.jpg",
+    "street": "Landhi"
+  },
+  {
+    "gender": "male",
+    "imgURL": "https://randomuser.me/api/portraits/med/men/66.jpg",
+    "street": "Saddar"
+  }
+]

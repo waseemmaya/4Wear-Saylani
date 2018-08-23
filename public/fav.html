@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- icon in the highest resolution we need it for -->
+    <link rel="icon" sizes="192x192" href="images/icons/icon-192x192.png">
+
+    <!-- reuse same icon for Safari -->
+    <link rel="apple-touch-icon" href="images/icon/icons-192x192.png">
+
+    <!-- multiple icons for IE -->
+    <meta name="msapplication-square310x310logo" content="images/icons/icon-512x512.png">
+    <link rel="manifest" href="manifest.json" />
+    <!-- <meta name="theme-color" content="red" /> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4Wear</title>
+
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">4Wear</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" onclick="alert('Login First..!')">Post Ad
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="fav.html">Favorite</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Categories
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" onclick="alert('Login First..!')" href="#">Cars</a>
+                        <a class="dropdown-item" onclick="alert('Login First..!')" href="#">Laptop</a>
+                        <a class="dropdown-item" onclick="alert('Login First..!')" href="#">Mobiles</a>
+                        <!-- <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a> -->
+                    </div>
+                </li>
+            </ul>
+
+            <input style="width: 200px" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" onclick="search()" type="submit" id="searchads">Search</button>
+
+        </div>
+    </nav>
+
+    <br>
+
+    <div id="favad"></div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDqtdGhl0kAykn6LWz4DlGUwTi--Rdajpo",
+            authDomain: "olxapp-60a3a.firebaseapp.com",
+            databaseURL: "https://olxapp-60a3a.firebaseio.com",
+            projectId: "olxapp-60a3a",
+            storageBucket: "olxapp-60a3a.appspot.com",
+            messagingSenderId: "3723958208"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+
+</body>
+
+<!-- <script src="main/search.js"></script> -->
+<style>
+    .card-text {
+        height: 20px;
+        overflow: hidden;
+    }
+</style>
+
+</html>
+<!-- 
+<script>
+    function favad() {
+        // var addID = localStorage.getItem("addID");
+        var database = firebase.database();
+        var allads = document.getElementById('favad');
+        // var getuser = database.ref('users').orderByChild('fullname');
+        // database.ref(`favorite/${addID}`).set({addid: addID});
+        // var fetchAds = database.ref('Ads');
+
+        var fetchAds = database.ref('favorite');
+        fetchAds.on('child_added', function (data) {
+            // console.log(data.val());
+            var row = generateRow(data.val(), data.key);
+            allads.innerHTML += row;
+        });
+
+        function generateRow(data, key) {
+            const rr = `<div class="card">
+        
+        <img class="card-img-top" width="270px" height="240px" src="${data.imageURL}" alt="Card image cap">
+        <div class="card-body">
+        <a href="#" onclick="addpage('${data.addID}')" class="card-text" id="desc"> <h5 class="card-title">${data.itemname}</h5></a>
+          <p class="card-text" id="desc">${data.description}</p>
+          <p class="card-text"><small class="text-muted">${data.date}</small></p>
+        </div>
+        </div>`;
+            return rr;
+        }
+    }
+    favad();
+</script> -->
+
+<script src="main/fav.js"></script>

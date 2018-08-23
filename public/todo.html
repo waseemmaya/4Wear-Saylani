@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="display-4 mb-3 text-center">To Do App</h3>
+
+        <form>
+            <div class="form-group">
+                <input class="form-control" type="text" id="title" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" id="body" placeholder="Add Your Task Here..."></textarea>
+            </div>
+
+        </form>
+        <div class="text-center">
+            <button class="btn btn-primary mb-3" value="Submit" onclick="addTodo()">Submit</button>
+        </div>
+        <div id="tasks">
+
+        </div>
+
+</body>
+
+<script>
+
+    var tasks = [];
+    // save an array of object in local storage
+    // var localTasks = localStorage.getItem('arr');
+    // localTasks = (localTasks) ? JSON.parse(localTasks) : [];
+
+    // var localTasks = [];
+
+    function addTodo() {
+        let title = document.getElementById('title').value;
+        let body = document.getElementById('body').value;
+        if (title == '' || body == '') {
+            alert("Sorry Enter Something")
+        } else {
+            tasks.push({
+                title: title,
+                body: body,
+                date: (new Date()).toDateString()
+            });
+            // save an array of object in local storage
+            // var setlocal = localStorage.setItem("arr", JSON.stringify(tasks));
+            // localTasks = localStorage.getItem('arr');
+            // localTasks = (localTasks) ? JSON.parse(localTasks) : [];
+            document.querySelector('form').reset();
+            showTasks();
+            console.log(tasks);
+            // console.log(localTasks);
+        }
+    }
+
+    function showTasks() {
+        let output = '';
+        tasks.map((data) => {
+            output += `
+                        <li class="list-group mb-1">
+                            <ul class="list-group-item">Title : ${data.title}</ul>
+                            <ul class="list-group-item">Body : ${data.body}</ul>
+                            <ul class="list-group-item">Time : ${data.date}</ul>
+                           <div class="container"> <button class="btn btn-secondary  mb-1 mt-2">Delete</button></div>
+                        </li>
+                        <hr>
+                    `
+        })
+        document.getElementById('tasks').innerHTML = output;
+    }
+    // showTasks();
+
+
+
+
+
+
+</script>
+
+</html>
