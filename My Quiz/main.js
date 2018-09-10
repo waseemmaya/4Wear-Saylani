@@ -1,42 +1,51 @@
 const myQuestions = [
-    {
-        question: "Who is the strongest?",
-        answers: {
-            a: "Superman",
-            b: "The Terminator",
-            c: "Waluigi, obviously"
-        },
-        correctAnswer: "c"
+  {
+    question: "Best Operating System?",
+    answers: {
+      a: "Windows",
+      b: "Linux",
+      c: "IOS"
     },
-    {
-        question: "What is the best site ever created?",
-        answers: {
-            a: "SitePoint",
-            b: "Simple Steps Code",
-            c: "Trick question; they're both the best"
-        },
-        correctAnswer: "c"
+    correctAnswer: "a"
+  },
+  {
+    question: "What is the best site ever created?",
+    answers: {
+      a: "SitePoint",
+      b: "Simple Steps Code",
+      c: "4Wear"
     },
-    {
-        question: "Where is Waldo really?",
-        answers: {
-            a: "Antarctica",
-            b: "Exploring the Pacific Ocean",
-            c: "Sitting in a tree",
-            d: "Minding his own business, so stop asking"
-        },
-        correctAnswer: "d"
-    }
+    correctAnswer: "c"
+  }
 ];
 
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
+const quizDiv = document.getElementById("quiz");
+const submitBtn = document.getElementById("submitBtn");
+const resultDiv = document.getElementById("result");
 
-function buildQuiz() {
-    myQuestions.map((data) => {
-        console.log(data.question);
-    })
+function showQuestions() {
+  var output = [];
+  var answers;
+
+  for (let i = 0; i < myQuestions.length; i++) {
+    answers = [];
+
+    for (opt in myQuestions[i].answers) {
+      answers.push(
+        "<label>" +
+          '<input type="radio" name="question' +
+          i +
+          '" value="' +
+          opt +
+          '">' +
+          opt +
+          ": " +
+          myQuestions[i].answers[opt] +
+          "</label>"
+      );
+    }
+    console.log(answers);
+  }
 }
 
-buildQuiz();
+showQuestions();
