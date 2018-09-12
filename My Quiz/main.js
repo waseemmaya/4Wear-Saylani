@@ -29,23 +29,27 @@ function showQuestions() {
 
   for (let i = 0; i < myQuestions.length; i++) {
     answers = [];
-
+    // console.log(answers);
     for (opt in myQuestions[i].answers) {
       answers.push(
-        "<label>" +
-          '<input type="radio" name="question' +
-          i +
-          '" value="' +
-          opt +
-          '">' +
-          opt +
-          ": " +
-          myQuestions[i].answers[opt] +
-          "</label>"
+        '<label>'
+        + '<input type="radio" name="question' + i + '" value="' + opt + '">'
+        + opt + ': '
+        + myQuestions[i].answers[opt]
+        + '</label>'
       );
+
+
     }
-    console.log(answers);
+    output.push(
+      '<div class="question">' + myQuestions[i].question + '</div>'
+      + '<div class="answers">' + answers.join('') + '</div>'
+    );
+    quizDiv.innerHTML = output.join('');
   }
+  console.log("output",output);
+  console.log("answers",answers);
+  
 }
 
 showQuestions();
